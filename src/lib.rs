@@ -1,12 +1,13 @@
-//! This crate inplements the ntlm hash in pure rust
+//! This crate inplements the ntlm hash in pure rust.
 //!
 //! # Usage :
+//! 
 //! ```rust
 //!use ntlm_hash::*
 //!println!("{}", ntlm_hash("some_string"))
 //! ```
 //! # Limitation :
-//! 	This crate hashes only strings of less than
+//! 	This crate hashes only strings of maximum 31 characters long.
 
 // this implementation is just a translated version of the one available here : https://openwall.info/wiki/john/NTLM
 
