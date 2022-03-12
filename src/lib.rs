@@ -1,3 +1,13 @@
+//! This crate inplements the ntlm hash in pure rust
+//!
+//! # Usage :
+//! ```rust
+//!use ntlm_hash::*
+//!println!("{}", ntlm_hash("some_string"))
+//! ```
+//! # Limitation :
+//! 	This crate hashes only strings of less than
+
 // this implementation is just a translated version of the one available here : https://openwall.info/wiki/john/NTLM
 
 // a comment that I left out from the original c inplementation :
@@ -152,4 +162,9 @@ pub fn convert_hex(output: &mut [u32; 4]) -> String
 /// This function takes a string and output a hex of the ntlm hash
 pub fn ntlm_hash(s: &str) -> String {
 	convert_hex(&mut ntlm_crypt(prepare_key(s.as_bytes())))
+}
+
+#[test]
+fn limit() {
+	println!("{}", ntlm_hash("0123456789012345678901234567890"));
 }
